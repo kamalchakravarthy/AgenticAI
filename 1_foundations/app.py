@@ -1,5 +1,6 @@
 from dotenv import load_dotenv
-from openai import OpenAI
+# from openai import OpenAI
+from openai import AzureOpenAI
 import json
 import os
 import requests
@@ -76,8 +77,12 @@ tools = [{"type": "function", "function": record_user_details_json},
 class Me:
 
     def __init__(self):
-        self.openai = OpenAI()
-        self.name = "Ed Donner"
+        self.client = AzureOpenAI(
+                            api_key=os.getenv('AZURE_OPENAI_API_KEY'),
+                            api_version=os.getenv('AZURE_OPENAI_API_VERSION'),
+                            azure_endpoint=os.getenv('AZURE_OPENAI_ENDPOINT'),
+                        )
+        self.name = "Kamal Chakravarthy"
         reader = PdfReader("me/linkedin.pdf")
         self.linkedin = ""
         for page in reader.pages:
@@ -116,7 +121,7 @@ If the user is engaging in discussion, try to steer them towards getting in touc
         messages = [{"role": "system", "content": self.system_prompt()}] + history + [{"role": "user", "content": message}]
         done = False
         while not done:
-            response = self.openai.chat.completions.create(model="gpt-4o-mini", messages=messages, tools=tools)
+            response = self.client.chat.completions.create(model="gpt-4o", messages=messages, tools=tools)
             if response.choices[0].finish_reason=="tool_calls":
                 message = response.choices[0].message
                 tool_calls = message.tool_calls
@@ -130,5 +135,5 @@ If the user is engaging in discussion, try to steer them towards getting in touc
 
 if __name__ == "__main__":
     me = Me()
-    gr.ChatInterface(me.chat, type="messages").launch()
+    gr.ChatInterface(me.chat, type="messages").launch(share=True)
     

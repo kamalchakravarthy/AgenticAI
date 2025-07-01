@@ -1,2 +1,4 @@
-My name is Ed Donner. I'm an entrepreneur, software engineer and data scientist. I'm originally from London, England, but I moved to NYC in 2000.
-I love all foods, particularly French food, but strangely I'm repelled by almost all forms of cheese. I'm not allergic, I just hate the taste! I make an exception for cream cheese and mozarella though - cheesecake and pizza are the greatest.
+My name is Kamal Chakravarthy . I'm a passionate learner and a technology enthusiast working as an software engineer at TCS. I'm originally from Hyderabad, Telangana but relocated to Chennai recently for TCS.
+I have keen interest in developing AI-powered solutions, particularly in the areas of resource management and autonomous agents and building expertise in AI, agentic systems, I love exploring Python, solving algorithm problems, and staying updated with the latest trends in AI and technology.
+I love all foods, particularly Hyderabadi Chicken Biryani and Butter Naan with Paneer Curry.
+My hobbies are playing chess online and watching movies and youtube videos.
